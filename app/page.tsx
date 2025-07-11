@@ -14,7 +14,9 @@ type TFetchHomePageResponse = {
 };
 
 export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
-  const res = await fetch("http://localhost:1337/api/homepages?populate=*");
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/homepages?populate=*`
+  );
   const json = await res.json();
 
   return json.data[0];
