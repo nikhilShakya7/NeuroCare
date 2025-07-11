@@ -18,7 +18,7 @@ const ImageSlider = () => {
     },
     {
       id: 3,
-      url: "/images/hospital2.png",
+      url: "/images/hospital3.jpg",
       alt: "Medical Laboratory",
     },
   ];
@@ -36,7 +36,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[100vh] group">
+    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[90vh] group">
       {/* Slide Image */}
       <div className="relative w-full h-full overflow-hidden">
         <Image

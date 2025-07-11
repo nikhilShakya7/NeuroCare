@@ -1,4 +1,5 @@
 import ImageSlider from "@/Components/ImageSlider";
+import SpecalitiesImageSlider from "@/Components/SpecilatiesImageSlider";
 import React from "react";
 
 type TFetchHomePageResponse = {
@@ -81,7 +82,7 @@ const Page = async () => {
               {homepage.founderPost}
             </h3>
 
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-600 text-lg leading-relaxed ">
               {homepage.founderWords}
             </p>
 
@@ -103,25 +104,8 @@ const Page = async () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
             Our Specialties
           </h1>
-          {/* Add specialties content here */}
         </div>
-      </div>
-
-      {/* Room Showcase */}
-      <div className="relative w-full overflow-hidden">
-        <div className="relative h-[50vh] sm:h-[70vh] w-full">
-          <img
-            src="/images/room1.jpg"
-            alt="Hospital Room"
-            className="h-full w-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center px-6">
-              High Class Patient Rooms
-            </h2>
-          </div>
-        </div>
+        <SpecalitiesImageSlider />
       </div>
 
       {/* Additional Content */}
