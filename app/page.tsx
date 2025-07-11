@@ -1,3 +1,4 @@
+import ImageSlider from "@/Components/ImageSlider";
 import React from "react";
 
 type TFetchHomePageResponse = {
@@ -18,36 +19,31 @@ export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
     `${process.env.NEXT_PUBLIC_API_URL}/api/homepages?populate=*`
   );
   const json = await res.json();
-
   return json.data[0];
 }
 
 const Page = async () => {
   const homepage = await fetchHomePageData();
-  console.log({ homepage });
+
   return (
-    <>
+    <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative w-full overflow-hidden bg-gray-900">
-        <div className="relative h-[60vh] sm:h-[70vh] md:h-screen md:max-h-[80vh] w-full">
-          <img
-            src="/images/hospital1.png"
-            alt="Hospital Facility"
-            className="h-full w-full object-cover object-center opacity-70"
-          />
+      <div className="relative w-full overflow-hidden bg-gray-600">
+        <div className="relative h-[60vh] sm:h-[70vh] md:h-screen md:max-h-[90vh] w-full">
+          <ImageSlider />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
           {/* Hero Content */}
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 to-transparent">
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-4 sm:px-6 lg:px-8 w-full">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg mb-4 sm:mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg mb-6">
                 {homepage.heroTitle || "Modern Healthcare Facilities"}
               </h1>
-              <p className="mt-3 sm:mt-4 text-lg sm:text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-md px-2 sm:px-0">
+              <p className="mt-4 text-xl sm:text-2xl md:text-3xl text-white max-w-3xl mx-auto drop-shadow-md">
                 {homepage.heroSubtitle ||
                   "State-of-the-art medical care in a compassionate environment"}
               </p>
-
-              <button className="mt-6 sm:mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300 transform hover:scale-105">
+              <button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                 Learn More
               </button>
             </div>
@@ -56,54 +52,88 @@ const Page = async () => {
       </div>
 
       {/* Founder Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
-          {/* Image Column - Order changes on mobile */}
-          <div className="w-full lg:w-1/2 xl:w-2/5 order-2 lg:order-1">
-            <img
-              src="/images/founder.png"
-              alt="Founder Portrait"
-              className="w-full h-[500px] shadow-xl object-cover max-w-[500px] mx-auto"
-            />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 md:py-24 lg:py-28">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 xl:gap-20">
+          {/* Image Column */}
+          <div className="w-full lg:w-1/2 xl:w-2/5">
+            <div className="relative w-full h-[400px] sm:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src="/images/founder.png"
+                alt="Founder Portrait"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           {/* Content Column */}
-          <div className="w-full lg:w-1/2 xl:w-3/5 order-1 lg:order-2">
-            <h1 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center lg:text-left">
-              Words from the Founder
-            </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mt-1 text-center lg:text-left">
-              {/*Dr. John Smith*/}
+          <div className="w-full lg:w-1/2 xl:w-3/5 space-y-6">
+            <div className="text-center lg:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                Words from the Founder
+              </h1>
+              <div className="w-20 h-1 bg-blue-600 mx-auto lg:mx-0 mb-6"></div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 text-center lg:text-left">
               {homepage.founderName}
             </h2>
-            <h3 className="text-base sm:text-lg md:text-xl text-blue-600 mb-4 sm:mb-6 text-center lg:text-left">
-              {/*Visionary Leader in Healthcare*/}
+            <h3 className="text-xl sm:text-2xl text-blue-600 text-center lg:text-left">
               {homepage.founderPost}
             </h3>
-            <p className="text-gray-600 mb-4 text-base sm:text-lg leading-relaxed sm:leading-loose">
-              {/*"तीन दशकभन्दा बढीको चिकित्सा अनुभवसहित मैले यो संस्थाको स्थापना एक
-              स्पष्ट उद्देश्यका साथ गरेको हुँ — अत्याधुनिक प्रविधिलाई व्यक्तिगत
-              र सहानुभूति-आधारित उपचार सेवासँग जोड्ने। मेरो यात्रा मुटु
-              शल्यक्रियामा नयाँ उपायहरू खोज्ने जोश र मानिसहरूको जीवनमा सकारात्मक
-              परिवर्तन ल्याउने प्रतिबद्धताले भरिएको छ। तर सर्जरी र विज्ञानभन्दा
-              पर, मैले सधैं नयाँ पुस्ताका स्वास्थ्यकर्मीहरूलाई शिक्षाद्वारा
-              सक्षम बनाउने र समुदायमैत्री स्वास्थ्य प्रणाली विकास गर्ने विश्वास
-              राखेको छु। हामी सँगै स्वास्थ्य सेवाको नयाँ परिभाषा बनाउँदैछौं।"*/}
+
+            <p className="text-gray-600 text-lg leading-relaxed">
               {homepage.founderWords}
             </p>
 
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-6">
-              <span className="bg-blue-100 text-blue-800 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
                 Board Certified
               </span>
-              <span className="bg-blue-100 text-blue-800 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
+              <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
                 30+ Years Experience
               </span>
             </div>
           </div>
         </div>
       </div>
-    </>
+
+      {/* Specialties Section */}
+      <div className="bg-gray-50 py-16 sm:py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
+            Our Specialties
+          </h1>
+          {/* Add specialties content here */}
+        </div>
+      </div>
+
+      {/* Room Showcase */}
+      <div className="relative w-full overflow-hidden">
+        <div className="relative h-[50vh] sm:h-[70vh] w-full">
+          <img
+            src="/images/room1.jpg"
+            alt="Hospital Room"
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center px-6">
+              High Class Patient Rooms
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Additional Content */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-20">
+        <div className="bg-white p-8 sm:p-10 rounded-xl shadow-lg">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Additional Information
+          </h2>
+          <p className="text-gray-600 text-lg">Your content goes here...</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
