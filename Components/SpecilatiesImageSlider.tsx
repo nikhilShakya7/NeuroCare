@@ -1,32 +1,59 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
+type TFetchSpeacilities = {
+  specialitiesTitle: string;
+  speacialitiesTitle1: string;
+  specalitiesTitle2: string;
+  SpecalitiesTitle3: string;
+  SpeacilitiesDescription1: string;
+  SpecalitiesDescription2: string;
+  SpecalitiesDescription3: string;
+};
 const SpecalitiesImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [specialities, setSpecialities] = useState<TFetchSpeacilities | null>(
+    null
+  );
+
+  useEffect(() => {
+    const fetchSpecialities = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/homepages?populate=*`
+        );
+        const json = await res.json();
+        const homepage = json?.data?.[0];
+        setSpecialities(homepage);
+      } catch {
+        console.log("error");
+      }
+    };
+    fetchSpecialities();
+  }, []);
 
   const slides = [
     {
       id: 1,
       url: "/images/hospital1.png",
       alt: "Hospital Facility",
-      title: "Modern Healthcare Facilities",
-      description:
-        "State-of-the-art medical care in a compassionate environment",
+      title: specialities?.speacialitiesTitle1,
+      description: specialities?.SpeacilitiesDescription1,
     },
     {
       id: 2,
       url: "/images/room1.jpg",
       alt: "Patient Room",
-      title: "Comfortable Patient Rooms",
-      description: "Designed for optimal recovery and comfort",
+      title: specialities?.specalitiesTitle2,
+      description: specialities?.SpecalitiesDescription2,
     },
     {
       id: 3,
-      url: "/images/lab.jpg",
+      url: "/images/medical.jpg",
       alt: "Medical Laboratory",
-      title: "Advanced Medical Laboratory",
-      description: "Cutting-edge diagnostic technology",
+      title: specialities?.SpecalitiesTitle3,
+      description: specialities?.SpecalitiesDescription3,
     },
   ];
 
@@ -54,7 +81,7 @@ const SpecalitiesImageSlider = () => {
           priority
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
           <div className="text-center px-4 sm:px-6 lg:px-8 w-full">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               {slides[currentIndex].title}

@@ -10,9 +10,13 @@ type TFetchHomePageResponse = {
   founderPost: string;
   id: number;
   documentId: string;
+  speacialitiesText: string;
   heroImage: {
     url: string;
   };
+  founderImage: {
+    url: string;
+  }[];
 };
 
 export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
@@ -25,7 +29,7 @@ export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
 
 const Page = async () => {
   const homepage = await fetchHomePageData();
-
+  console.log(homepage);
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -59,8 +63,10 @@ const Page = async () => {
           <div className="w-full lg:w-1/2 xl:w-2/5">
             <div className="relative w-full h-[400px] sm:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/images/founder.png"
-                alt="Founder Portrait"
+                src={
+                  process.env.NEXT_PUBLIC_API_URL + homepage.founderImage[0].url
+                }
+                alt={homepage.founderName}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -102,7 +108,7 @@ const Page = async () => {
       <div className="bg-gray-50 py-16 sm:py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12">
-            Our Specialties
+            {homepage.speacialitiesText}{" "}
           </h1>
         </div>
         <SpecalitiesImageSlider />

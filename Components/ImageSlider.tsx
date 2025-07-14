@@ -1,7 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-
+type TFetchHomePageResponse = {
+  heroImage: {
+    url: string;
+  };
+};
+export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/homepages?populate=*`
+  );
+  const json = await res.json();
+  return json.data[0];
+}
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
