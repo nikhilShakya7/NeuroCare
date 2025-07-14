@@ -19,17 +19,22 @@ const ImageSlider = () => {
   const slides = [
     {
       id: 1,
-      url: "/images/hospital1.png",
+      url: "/images/hospital4.png",
       alt: "Hospital Facility",
     },
     {
       id: 2,
-      url: "/images/room1.jpg",
+      url: "/images/hospital5.png",
       alt: "Patient Room",
     },
     {
       id: 3,
       url: "/images/hospital3.jpg",
+      alt: "Medical Laboratory",
+    },
+    {
+      id: 4,
+      url: "/images/doctors1.png",
       alt: "Medical Laboratory",
     },
   ];
@@ -54,7 +59,7 @@ const ImageSlider = () => {
           src={slides[currentIndex].url}
           alt={slides[currentIndex].alt}
           fill
-          className="object-cover object-center transition-opacity duration-500"
+          className="object-cover object-center transition-transform duration-500"
           priority
         />
         {/* Overlay */}
