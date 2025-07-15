@@ -87,7 +87,7 @@ const Page = async () => {
               <img
                 src={`${process.env.NEXT_PUBLIC_API_URL}${homepage.founderImage[0].url}`}
                 alt={homepage.founderName}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover  hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               />
             </div>
           </div>
@@ -168,25 +168,25 @@ const Page = async () => {
         {/* Stats container */}
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center  hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <p className="text-3xl md:text-4xl font-bold text-blue-600">
                 50+
               </p>
               <p className="text-gray-600">Specialists</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center  hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <p className="text-3xl md:text-4xl font-bold text-blue-600">
                 24/7
               </p>
               <p className="text-gray-600">Availability</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center  hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <p className="text-3xl md:text-4xl font-bold text-blue-600">
                 100%
               </p>
               <p className="text-gray-600">Certified</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center  hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <p className="text-3xl md:text-4xl font-bold text-blue-600">
                 5000+
               </p>
