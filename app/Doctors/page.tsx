@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface ImageData {
@@ -14,6 +13,8 @@ interface Doctor {
   image: ImageData[] | null;
   bio: string;
   specialty: string;
+  title: string;
+  description: string;
 }
 
 const DoctorsPage = () => {
@@ -31,6 +32,8 @@ const DoctorsPage = () => {
                 url: img.url,
               }))
             : null,
+          title: doctor.title,
+          description: doctor.description,
           bio: doctor.bio,
           specialty: doctor.specialty,
         }));
@@ -48,7 +51,7 @@ const DoctorsPage = () => {
         className="text-center mb-16"
       >
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Our Medical Specialists
+          Our Medical Specialists{" "}
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Meet our team of highly qualified doctors dedicated to your health and
@@ -65,10 +68,9 @@ const DoctorsPage = () => {
           >
             <div className="relative h- w-full">
               {doctor.image?.[0]?.url ? (
-                <Image
+                <img
                   src={`http://localhost:1337${doctor.image[0].url}`}
                   alt={doctor.name}
-                  fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />

@@ -155,8 +155,8 @@ const Page = async () => {
           </p>
         </div>
 
-        <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-12 md:mb-16">
-          <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px]">
+        <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-12 md:mb-16 h-auto">
+          <div className="relative w-full h-full sm:h-80 md:h-full lg:h-[500px]">
             <img
               src={`${process.env.NEXT_PUBLIC_API_URL}${homepage.team[0].url}`}
               alt="Team"
