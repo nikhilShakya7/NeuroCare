@@ -13,9 +13,8 @@ export async function fetchHomePageData(): Promise<TFetchHomePageResponse> {
   const json = await res.json();
   return json.data[0];
 }
-const ImageSlider = async () => {
+const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const homepage = await fetchHomePageData();
 
   const slides = [
     {
@@ -60,7 +59,7 @@ const ImageSlider = async () => {
           src={slides[currentIndex].url}
           alt={slides[currentIndex].alt}
           fill
-          className="object-cover object-center transition-transform duration-500 "
+          className="object-cover object-center transition-transform duration-500"
           priority
         />
         {/* Overlay */}
