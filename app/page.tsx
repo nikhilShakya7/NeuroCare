@@ -2,7 +2,7 @@ import ImageSlider from "@/Components/ImageSlider";
 import SpecalitiesImageSlider from "@/Components/SpecilatiesImageSlider";
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 type TFetchHomePageResponse = {
   heroTitle: string;
   heroSubtitle: string;
@@ -162,6 +162,16 @@ const Page = async () => {
               alt="Team"
               className="w-full h-full object-cover   "
             />
+          </div>
+          <div className="flex justify-center md:justify-start">
+            {" "}
+            <Link href="/Doctors">
+              <button
+                className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-lg transition-all duration-300 ${buttonPadding} mt-8 md:ml-[700px]`}
+              >
+                Meet Our Doctors
+              </button>
+            </Link>
           </div>
         </div>
 

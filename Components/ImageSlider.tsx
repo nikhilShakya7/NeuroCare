@@ -68,7 +68,7 @@ const ImageSlider = () => {
       {/* Left Arrow */}
       <button
         onClick={prevSlide}
-        className="hidden sm:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/20 text-white p-2 rounded-full hover:bg-black/50 transition-all duration-300 z-10"
+        className="hidden sm:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/20 text-white p-2 rounded-full hover:bg-black/50 transition-all hover:cursor-pointer duration-300 z-10"
         aria-label="Previous slide"
       >
         <svg
@@ -90,7 +90,7 @@ const ImageSlider = () => {
       {/* Right Arrow */}
       <button
         onClick={nextSlide}
-        className="hidden sm:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-all duration-300 z-10"
+        className="hidden sm:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-all duration-300 z-10 hover:cursor-pointer"
         aria-label="Next slide"
       >
         <svg
