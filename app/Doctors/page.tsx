@@ -3,42 +3,44 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
+interface ImageData {
+  url: string;
+}
+
 interface Doctor {
-  name: string;
-  image: string;
-  bio: string;
   id: number;
+  name: string;
+  image: ImageData[] | null;
+  bio: string;
   specialty: string;
 }
 
 const DoctorsPage = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
+
   useEffect(() => {
-    fetch("http://localhost:1337/api/doctors-pages")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors-pages?populate=*`)
       .then((res) => res.json())
       .then((data) => {
-        setDoctors(data.data);
+        const formattedDoctors = data.data.map((doctor: any) => ({
+          id: doctor.id,
+          name: doctor.name,
+          image: doctor.image
+            ? doctor.image.map((img: any) => ({
+                url: img.url,
+              }))
+            : null,
+          bio: doctor.bio,
+          specialty: doctor.specialty,
+        }));
+        setDoctors(formattedDoctors);
       })
       .catch((error) => console.error("Error fetching doctors:", error));
   }, []);
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -54,28 +56,27 @@ const DoctorsPage = () => {
         </p>
       </motion.div>
 
-      {/* Doctors Grid */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {doctors.map((doctor) => (
           <motion.div
             key={doctor.id}
-            variants={item}
             whileHover={{ y: -5 }}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative h-64 w-full">
-              <Image
-                src={doctor.image}
-                alt={doctor.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
+              {doctor.image?.[0]?.url ? (
+                <Image
+                  src={`http://localhost:1337${doctor.image[0].url}`}
+                  alt={doctor.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              ) : (
+                <div className="bg-gray-200 w-full h-full flex items-center justify-center">
+                  <span className="text-gray-500">No Image</span>
+                </div>
+              )}
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-1">
@@ -94,31 +95,9 @@ const DoctorsPage = () => {
             </div>
           </motion.div>
         ))}
-      </motion.div>
-
-      {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        viewport={{ once: true }}
-        className="mt-20 bg-blue-600 rounded-xl p-8 text-center text-white"
-      >
-        <h2 className="text-2xl font-bold mb-4">
-          Ready to Book an Appointment?
-        </h2>
-        <p className="mb-6 max-w-2xl mx-auto">
-          Our team is here to provide you with exceptional care. Schedule your
-          visit today.
-        </p>
-        <Link
-          href="/appointment"
-          className="inline-block bg-white text-blue-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300"
-        >
-          Book Now
-        </Link>
-      </motion.div>
+      </div>
     </div>
   );
 };
+
 export default DoctorsPage;
