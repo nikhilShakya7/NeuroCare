@@ -47,7 +47,7 @@ const Page = async () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative w-full overflow-hidden bg-gray-600">
+      <div className="relative w-full overflow-hidden bg-gray-600 ">
         <div className="relative h-[60vh] sm:h-[70vh] md:h-screen md:max-h-[90vh] w-full">
           <ImageSlider />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
