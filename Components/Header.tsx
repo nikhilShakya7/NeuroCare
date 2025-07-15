@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import AboutPage from "@/app/About/page";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,9 +28,9 @@ const Header: React.FC = () => {
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
+    { name: "About", href: "/About" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -64,8 +65,8 @@ const Header: React.FC = () => {
                   hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500
                   ${
                     scrolled
-                      ? "text-gray-800 hover:bg-white/30" // Lighter hover effect when translucent
-                      : "text-gray-700 hover:bg-gray-50" // Normal hover effect
+                      ? "text-gray-800 hover:bg-white/30"
+                      : "text-gray-700 hover:bg-gray-50"
                   }`}
                 aria-label={`Navigate to ${item.name}`}
               >

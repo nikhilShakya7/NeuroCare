@@ -20,7 +20,7 @@ const DoctorsPage = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors-pages?populate=*`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors-pages?populate=image`)
       .then((res) => res.json())
       .then((data) => {
         const formattedDoctors = data.data.map((doctor: any) => ({
@@ -56,14 +56,14 @@ const DoctorsPage = () => {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {doctors.map((doctor) => (
           <motion.div
             key={doctor.id}
             whileHover={{ y: -5 }}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="relative h-64 w-full">
+            <div className="relative h- w-full">
               {doctor.image?.[0]?.url ? (
                 <Image
                   src={`http://localhost:1337${doctor.image[0].url}`}
