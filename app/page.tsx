@@ -58,7 +58,7 @@ const Page = async () => {
               className={`text-center ${containerPadding} w-full ${maxWidth}`}
             >
               <h1
-                className={`text-4xl sm:text-5xl md:text-6xl font-bold text-white ${headingMargin}`}
+                className={`text-4xl sm:text-5xl md:text-6xl font-bold text-white ${headingMargin} drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}
               >
                 {homepage.heroTitle || "Modern Healthcare Facilities"}
               </h1>

@@ -19,22 +19,17 @@ const ImageSlider = () => {
   const slides = [
     {
       id: 1,
-      url: "/images/hospital4.png",
+      url: "/images/hospital.jpg",
       alt: "Hospital Facility",
     },
     {
       id: 2,
-      url: "/images/hospital5.png",
+      url: "/images/interior.jpg",
       alt: "Patient Room",
     },
     {
       id: 3,
       url: "/images/hospital3.jpg",
-      alt: "Medical Laboratory",
-    },
-    {
-      id: 4,
-      url: "/images/doctors1.png",
       alt: "Medical Laboratory",
     },
   ];
