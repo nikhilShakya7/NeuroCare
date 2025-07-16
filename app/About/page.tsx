@@ -17,11 +17,23 @@ interface Doctor {
   title: string;
   description: string;
 }
+interface AboutContent {
+  maintext: string;
+  mainDescription: string;
+  shortText1: string;
+  storyText2: string;
+  midtitle: string;
+  middescription: string;
+}
 
 export default function AboutPage() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [pageContent, setPageContent] = useState<AboutContent | null>(null);
 
   useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/about-pages?populate=*`)
+      .then((res) => res.json())
+      .then((data) => setPageContent(data.data.attributes));
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors-pages?populate=image`)
       .then((res) => res.json())
       .then((data) => {
@@ -62,11 +74,11 @@ export default function AboutPage() {
             className="text-center text-white px-4"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              About Our Medical Center
+              {pageContent?.maintext || "About Our Medical Center"}
             </h1>
             <p className="text-xl max-w-2xl mx-auto">
-              Delivering compassionate healthcare with excellence for over 20
-              years
+              {pageContent?.mainDescription ||
+                "Delivering compassionate healthcare with excellence for over 20             years"}
             </p>
           </motion.div>
         </div>
