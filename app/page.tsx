@@ -1,8 +1,12 @@
+"use client";
 import ImageSlider from "@/Components/ImageSlider";
 import SpecalitiesImageSlider from "@/Components/SpecilatiesImageSlider";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+import TestimonialsSection from "@/Components/Testimonal";
 type TFetchHomePageResponse = {
   heroTitle: string;
   heroSubtitle: string;
@@ -68,11 +72,13 @@ const Page = async () => {
                 {homepage.heroSubtitle ||
                   "State-of-the-art medical care in a compassionate environment"}
               </p>
-              <button
-                className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg text-lg transition-all duration-300 ${buttonPadding}`}
-              >
-                Learn More
-              </button>
+              <Link href="/About">
+                <button
+                  className={`bg-blue-600 hover:bg-blue-700 cursor-pointer text-white font-semibold rounded-lg text-lg transition-all duration-300 ${buttonPadding}`}
+                >
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -205,6 +211,7 @@ const Page = async () => {
           </div>
         </div>
       </div>
+      <TestimonialsSection />
     </div>
   );
 };
