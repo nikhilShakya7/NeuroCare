@@ -1,4 +1,3 @@
-"use client";
 import ImageSlider from "@/Components/ImageSlider";
 import SpecalitiesImageSlider from "@/Components/SpecilatiesImageSlider";
 import React from "react";

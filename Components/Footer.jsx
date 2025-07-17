@@ -1,40 +1,58 @@
 "use client";
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-white/70 backdrop-blur-md shadow-sm border-t border-gray-100 mt-16">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="bg-white/70 backdrop-blur-md shadow-sm border-t border-gray-100 mt-16"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and description */}
-          <div className="space-y-4">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
             <img
               src="/images/logo.png"
               alt="Company Logo"
               className="h-16 w-auto hover:scale-105 transition-transform duration-200"
             />
-            <p className="text-gray-600">
+            <p className="text-gray-600 mt-2">
               State-of-the-art medical care in a compassionate environment
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mt-3">
               {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map(
                 (Icon, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href="#"
-                    className="text-gray-500 hover:text-blue-600 hover:scale-110 transition-all duration-300"
+                    whileHover={{ scale: 1.2, color: "#2563eb" }} // blue-600
+                    className="text-gray-500"
                     aria-label={`Follow us on ${Icon.name.replace("Fa", "")}`}
                   >
                     <Icon size={20} />
-                  </a>
+                  </motion.a>
                 )
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
             <h3 className="text-lg font-semibold text-gray-800 mb-4 hover:text-blue-600 transition-colors duration-200">
               Quick Links
             </h3>
@@ -50,10 +68,14 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
             <h3 className="text-lg font-semibold text-gray-800 mb-4 hover:text-blue-600 transition-colors duration-200">
               Services
             </h3>
@@ -71,10 +93,14 @@ const Footer = () => {
                 )
               )}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             <h3 className="text-lg font-semibold text-gray-800 mb-4 hover:text-blue-600 transition-colors duration-200">
               Contact Us
             </h3>
@@ -98,11 +124,16 @@ const Footer = () => {
                 (977) 5548692
               </a>
             </address>
-          </div>
+          </motion.div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <motion.div
+          {...fadeInUp}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} NeuroCare. All rights reserved.
           </p>
@@ -126,9 +157,9 @@ const Footer = () => {
               Cookies
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
