@@ -160,12 +160,12 @@ const Page = async () => {
           </p>
         </div>
 
-        <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-12 md:mb-16 h-auto">
+        <div className="overflow-x-hidden w-screen relative left-1/2 right-1/2 -mx-[50vw] mb-12 md:mb-16 h-auto">
           <div className="relative w-full h-full sm:h-80 md:h-full lg:h-[500px]">
             <img
               src={`${process.env.NEXT_PUBLIC_API_URL}${homepage.team[0].url}`}
               alt="Team"
-              className="w-full h-full object-cover   "
+              className="w-full h-full object-cover overflow-x-hidden"
             />
           </div>
           <div className="flex justify-center md:justify-start">
