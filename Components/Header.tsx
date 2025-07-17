@@ -33,7 +33,7 @@ const Header: React.FC = () => {
       name: "Services",
       href: "#services",
       submenu: [
-        { name: "Neurology", href: "/Neurology" },
+        { name: "Neurology", href: "/services/neurology" },
         { name: "Neurosurgery", href: "/Neurosurgery" },
         {
           name: "Neuro-radiology and Diagnostics",
@@ -50,8 +50,8 @@ const Header: React.FC = () => {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/70 backdrop-blur-md shadow-sm"
-          : "bg-white bg-opacity-30"
+          ? "bg-white/70 backdrop-blur-md shadow-2xl"
+          : "bg-white bg-opacity-30 shadow"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
