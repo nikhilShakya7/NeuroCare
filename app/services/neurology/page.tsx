@@ -97,7 +97,7 @@ const Page = () => {
                 <img
                   src={`${process.env.NEXT_PUBLIC_API_URL}${service.image.url}`}
                   alt="Neurology Department"
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 "
                 />
               </div>
             </motion.div>
