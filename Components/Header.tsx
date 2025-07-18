@@ -34,7 +34,7 @@ const Header: React.FC = () => {
       href: "#services",
       submenu: [
         { name: "Neurology", href: "/services/neurology" },
-        { name: "Neurosurgery", href: "/Neurosurgery" },
+        { name: "Neurosurgery", href: "/services/neurosurgery" },
         {
           name: "Neuro-radiology and Diagnostics",
           href: "/Intervention Neuro-radiology and Diagnostics",
