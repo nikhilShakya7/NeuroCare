@@ -63,7 +63,7 @@ const Page = () => {
   const [content, setContent] = useState<Neurology[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/neurologies?populate=*`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/neurosurgeries?populate=*`)
       .then((response) => response.json())
       .then((data) => {
         const formattedContent = data.data.map((service: any) => ({
@@ -72,9 +72,9 @@ const Page = () => {
           description1: service.description1,
           description2: service.description2,
           description3: service.description3,
-          image: {
+          /* image: {
             url: service.image?.formats?.medium.url || service.image?.url || "",
-          },
+          },*/
         }));
         setContent(formattedContent);
       })
@@ -142,7 +142,7 @@ const Page = () => {
             >
               <div className="relative w-full h-[300px] sm:h-[500px] rounded-xl overflow-hidden shadow-2xl group">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_URL}${service.image.url}`}
+                  src="/images"
                   alt="Neurology Department"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
