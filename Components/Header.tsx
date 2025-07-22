@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       ],
     },
     { name: "About", href: "/About" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
