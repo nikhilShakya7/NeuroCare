@@ -47,6 +47,16 @@ const ContactPage = () => {
                 />
               </div>
               <div>
+                <label htmlFor="text" className="block text-gray-700 mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="text"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              <div>
                 <label htmlFor="email" className="block text-gray-700 mb-2">
                   Email Address
                 </label>
@@ -56,6 +66,7 @@ const ContactPage = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
+
               <div>
                 <label htmlFor="message" className="block text-gray-700 mb-2">
                   Your Message

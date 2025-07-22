@@ -2,7 +2,7 @@
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import Link from "next/link";
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -36,7 +36,7 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href="#"
-                    whileHover={{ scale: 1.2, color: "#2563eb" }} // blue-600
+                    whileHover={{ scale: 1.2, color: "#2563eb" }}
                     className="text-gray-500"
                     aria-label={`Follow us on ${Icon.name.replace("Fa", "")}`}
                   >
@@ -60,7 +60,7 @@ const Footer = () => {
               {["Home", "Services", "About", "Contact"].map((item) => (
                 <li key={item}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={`/${item}`}
                     className="text-gray-600 hover:text-blue-600 hover:translate-x-1 transition-all duration-300 flex items-center"
                   >
                     <span className="mr-1">→</span> {item}
@@ -80,15 +80,17 @@ const Footer = () => {
               Services
             </h3>
             <ul className="space-y-2">
-              {["Service 1", "Service 2", "Service 3", "Service 4"].map(
+              {["Neurology", "Neurosurgery", "Service 3", "Service 4"].map(
                 (service) => (
                   <li key={service}>
-                    <a
-                      href="#"
+                    <Link
+                      href={`/services/${service
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
                       className="text-gray-600 hover:text-blue-600 hover:underline transition-all duration-300"
                     >
                       {service}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}
